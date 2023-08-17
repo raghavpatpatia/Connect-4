@@ -5,12 +5,12 @@ Tile::Tile()
     this->tileValue = " ";
 }
 
-void Tile::SetTileValue(string value)
+void Tile::SetTileValue(std::string value)
 {
     this->tileValue = value;
 }
 
-string Tile::GetTileValue()
+std::string Tile::GetTileValue()
 {
     return tileValue;
 }

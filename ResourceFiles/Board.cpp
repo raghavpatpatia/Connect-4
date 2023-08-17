@@ -9,20 +9,20 @@ void Board::SetBoard() {
 }
 
 void Board::PrintBoard() {
-  cout << endl << "********** GAME BOARD **********" << endl;
-  cout << "Column:  1  2  3  4  5  6  7  " << endl;
-  cout << "------------------------------" << endl;
+  std::cout << std::endl << "********** GAME BOARD **********" << std::endl;
+  std::cout << "Column:  1  2  3  4  5  6  7  " << std::endl;
+  std::cout << "------------------------------" << std::endl;
   for (int i = 0; i < rows; i++) {
-    cout << "        |";
+    std::cout << "        |";
     for (int j = 0; j < columns; j++) {
-      cout << board[i][j].GetTileValue() << " |";
+      std::cout << board[i][j].GetTileValue() << " |";
     }
-    cout << endl << "        ----------------------" << endl;
+    std::cout << std::endl << "        ----------------------" << std::endl;
   }
-  cout << endl << "------------------------------" << endl;
+  std::cout << std::endl << "------------------------------" << std::endl;
 }
 
-bool Board::UpdateGrid(int columnNumber, string value, int &rowNumber) {
+bool Board::UpdateGrid(int columnNumber, std::string value, int &rowNumber) {
   for (int i = 5; i >= 0; i--) {
     if (columnNumber >= 0 && columnNumber <= 6 &&
         board[i][columnNumber].GetTileValue() == " ") {

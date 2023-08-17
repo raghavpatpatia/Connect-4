@@ -3,10 +3,10 @@
 
 class Tile {
 private:
-  string tileValue;
+  std::string tileValue;
 
 public:
   Tile();
-  string GetTileValue();
-  void SetTileValue(string value);
+  std::string GetTileValue();
+  void SetTileValue(std::string value);
 };
