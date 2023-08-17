@@ -14,4 +14,6 @@ public:
     void SetBoard();
     void PrintBoard();
     bool UpdateGrid(int columnNumber, string value, int& rowNumber);
+    bool HorizontalCheck(int row, int column);
+    bool VerticalCheck(int row, int column);
 };
