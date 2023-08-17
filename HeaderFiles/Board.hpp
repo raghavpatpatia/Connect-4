@@ -16,4 +16,5 @@ public:
     bool UpdateGrid(int columnNumber, std::string value, int& rowNumber);
     bool HorizontalCheck(int row, int column);
     bool VerticalCheck(int row, int column);
+    bool DiagonalCheck(int row, int column);
 };

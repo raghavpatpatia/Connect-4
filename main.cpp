@@ -1,8 +1,7 @@
-#include "Headerfiles/Board.hpp"
+#include "Headerfiles/Game.hpp"
 
 int main()
 {
-    Board b;
-    b.PrintBoard();
+    Game game;
     return 0;
 }

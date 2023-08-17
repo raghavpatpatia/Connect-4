@@ -19,13 +19,13 @@ void Board::PrintBoard() {
     }
     std::cout << std::endl << "        ----------------------" << std::endl;
   }
-  std::cout << std::endl << "------------------------------" << std::endl;
+  std::cout << "------------------------------" << std::endl;
 }
 
 bool Board::UpdateGrid(int columnNumber, std::string value, int &rowNumber) {
   for (int i = 5; i >= 0; i--) {
-    if (columnNumber >= 0 && columnNumber <= 6 &&
-        board[i][columnNumber].GetTileValue() == " ") {
+    if (columnNumber >= 0 && columnNumber <= 6 && board[i][columnNumber].GetTileValue() == " ") 
+    {
       rowNumber = i;
       if (value == "R") {
         board[i][columnNumber].SetTileValue(RED_TEXT + value + DEFAULT_COLOR);
@@ -77,5 +77,38 @@ bool Board::VerticalCheck(int row, int column)
       counter = 1;
     }
   }
+  return false;
+}
+
+bool Board::DiagonalCheck(int row, int column)
+{
+  int counter = 1;
+
+  // bottom-left to top-right
+  int i = row - 1, j = column + 1;
+  while (i >= 0 && j < columns && board[i][j].GetTileValue() == board[i + 1][j - 1].GetTileValue())
+  {
+    counter++;
+    if (counter == 4)
+    {
+      return true;
+    }
+    i--;
+    j++;
+  }
+
+  // top-left to bottom-right
+  i = row + 1, j = column + 1;
+  while (i < rows && j < columns && board[i][j].GetTileValue() == board[i - 1][j - 1].GetTileValue())
+  {
+    counter++;
+    if (counter == 4)
+    {
+      return true;
+    }
+    i++;
+    j++;
+  }
+
   return false;
 }
