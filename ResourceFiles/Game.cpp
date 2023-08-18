@@ -10,6 +10,16 @@ void Game::WrongInput()
               << "*------------------------------------------*\n";
 }
 
+void Game::OutofBoundsInput(int column)
+{
+    std::cout << "*----------------------------------------------------------*\n"
+              << "|                                                          |\n"
+              << "|                         WRONG INPUT...                   |\n"
+              << "|                     Column " << column + 1 << " is already full.            |\n"
+              << "|                                                          |\n"
+              << "*----------------------------------------------------------*\n";
+}
+
 void Game::GameRules()
 {
     std::cout << "*---------------------------------------------------------------------------------------*\n"
@@ -64,15 +74,20 @@ void Game::PlayerInput(Player currentPlayer)
         if (column >= 1 && column <= 7)
         {
             column--;
-            isInputCorrect = true;
+            //isInputCorrect = true;
             currentValue = currentPlayer == Player::Player1 ? "R" : "B";
             for (int i = 6 - 1; i >= 0; i--)
             {
                 if (board.UpdateGrid(column, currentValue, i))
                 {
                     row = i;
+                    isInputCorrect = true;
                     break;
                 }
+            }
+            if (!isInputCorrect)
+            {
+                OutofBoundsInput(column);
             }
         }
         else
@@ -100,7 +115,7 @@ void Game::Play()
 void Game::PlayerWon()
 {
     std::string winner = currentPlayer == Player::Player1 ? "PLAYER 2 (B) WINS!" : "PLAYER 1 (R) WINS!";
-    winner = isGameDraw ? "IT'S A DRAW!!" : winner;
+    winner = isGameDraw ? "*-------------------- IT'S A DRAW !! --------------------*" : winner;
     std::cout << "\n*-------------------- GAME OVER --------------------*";
     std::cout << std::endl << winner << std::endl;
     std::cout << "*---------------------------------------------------------------------------------------*\n"

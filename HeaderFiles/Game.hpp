@@ -9,6 +9,7 @@ private:
     int tilesLeft;
     Player currentPlayer;
     void WrongInput();
+    void OutofBoundsInput(int column);
     void GameRules();
     void GameStatus(int rows, int columns);
     void PlayerInput(Player currentPlayer);
