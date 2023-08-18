@@ -57,7 +57,7 @@ void Game::GameStatus(int rows, int columns)
     }
     else
     {
-        isGameOver = board.HorizontalCheck(rows, columns) || board.VerticalCheck(rows, columns) || board.DiagonalCheck(rows, columns);
+        isGameOver = board.HorizontalCheck(rows, columns) || board.VerticalCheck(rows, columns) || board.LeftDiagonalCheck(rows, columns) || board.RightDiagonalCheck(rows, columns);
     }
 }
 

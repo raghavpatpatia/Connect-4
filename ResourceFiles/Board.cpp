@@ -1,4 +1,4 @@
-#include "../Headerfiles/Board.hpp"
+#include "../HeaderFiles/Board.hpp"
 
 void Board::SetBoard() {
   for (int i = 0; i < rows; i++) {
@@ -80,35 +80,52 @@ bool Board::VerticalCheck(int row, int column)
   return false;
 }
 
-bool Board::DiagonalCheck(int row, int column)
+bool Board::LeftDiagonalCheck(int row, int column)
 {
-  int counter = 1;
-
-  // bottom-left to top-right
-  int i = row - 1, j = column + 1;
-  while (i >= 0 && j < columns && board[i][j].GetTileValue() == board[i + 1][j - 1].GetTileValue())
+  int count = 1;
+  int right = std::min(5 - row, 6 - column);
+  int left = std::min(row, column);
+  for (int i = -left + 1; i <= right; i++)
   {
-    counter++;
-    if (counter == 4)
+    int rowIndex = row + i;
+    int colIndex = column + i;
+    if (board[rowIndex][colIndex].GetTileValue() != " " && board[rowIndex][colIndex].GetTileValue() == board[rowIndex - 1][colIndex - 1].GetTileValue())
     {
-      return true;
+      count += 1;
+      if (count == 4)
+      {
+        return true;
+      }
     }
-    i--;
-    j++;
+    else
+    {
+      count = 1;
+    }
   }
+  return false;
+}
 
-  // top-left to bottom-right
-  i = row + 1, j = column + 1;
-  while (i < rows && j < columns && board[i][j].GetTileValue() == board[i - 1][j - 1].GetTileValue())
+bool Board::RightDiagonalCheck(int row, int column)
+{
+  int count = 1;
+  int right = std::min(row, 6 - column);
+  int left = std::min(5 - row, column);
+  for (int i = -left + 1; i <= right; i++)
   {
-    counter++;
-    if (counter == 4)
+    int rowIndex = row - i;
+    int colIndex = column + i;
+    if (board[rowIndex][colIndex].GetTileValue() != " " && board[rowIndex][colIndex].GetTileValue() == board[rowIndex + 1][colIndex - 1].GetTileValue())
     {
-      return true;
+      count += 1;
+      if (count == 4)
+      {
+        return true;
+      }
     }
-    i++;
-    j++;
+    else
+    {
+      count = 1;
+    }
   }
-
   return false;
 }
