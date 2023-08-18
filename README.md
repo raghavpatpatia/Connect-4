@@ -2,7 +2,7 @@
 
 Welcome to my Connect-4 Game project developed in C++! 🕹️ This game showcases my skills in Object-Oriented Programming (OOP) and data structures.
 
-[![Connect-4 Gameplay](https://link-to-your-thumbnail-image)](https://youtu.be/vFbkanG9NCA)
+[![Connect-4 Gameplay](https://img.youtube.com/vi/vFbkanG9NCA/0.jpg)](https://youtu.be/vFbkanG9NCA)
 
 ## Game Highlights
 
